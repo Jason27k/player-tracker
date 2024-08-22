@@ -17,6 +17,7 @@
 		FD16FB882C6E96ED00D100D9 /* players.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD16FB872C6E96ED00D100D9 /* players.plist */; };
 		FD16FB8A2C6EA81600D100D9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16FB892C6EA81600D100D9 /* API.swift */; };
 		FD4E84D42C706421001D128D /* PlayerViewObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4E84D32C706421001D128D /* PlayerViewObservable.swift */; };
+		FD5281232C77BB0800142CB2 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5281222C77BB0800142CB2 /* Toast.swift */; };
 		FD7AFFCA2C74605F00F46EA4 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7AFFC92C74605F00F46EA4 /* Data.swift */; };
 		FD7AFFCE2C74632400F46EA4 /* MatchListObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7AFFCD2C74632400F46EA4 /* MatchListObservable.swift */; };
 		FD7AFFD02C74649900F46EA4 /* MatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7AFFCF2C74649900F46EA4 /* MatchList.swift */; };
@@ -64,6 +65,7 @@
 		FD16FB872C6E96ED00D100D9 /* players.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = players.plist; sourceTree = "<group>"; };
 		FD16FB892C6EA81600D100D9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FD4E84D32C706421001D128D /* PlayerViewObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewObservable.swift; sourceTree = "<group>"; };
+		FD5281222C77BB0800142CB2 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		FD7AFFC92C74605F00F46EA4 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		FD7AFFCD2C74632400F46EA4 /* MatchListObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListObservable.swift; sourceTree = "<group>"; };
 		FD7AFFCF2C74649900F46EA4 /* MatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchList.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				FD4E84D32C706421001D128D /* PlayerViewObservable.swift */,
 				FD7AFFCD2C74632400F46EA4 /* MatchListObservable.swift */,
 				FDF2F2052C7586E800EB13EE /* LocalWebPImageView.swift */,
+				FD5281222C77BB0800142CB2 /* Toast.swift */,
 			);
 			path = "us-tracker";
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				FD7AFFCA2C74605F00F46EA4 /* Data.swift in Sources */,
 				FD16FB742C6E69A500D100D9 /* ContentView.swift in Sources */,
 				FD16FB8A2C6EA81600D100D9 /* API.swift in Sources */,
+				FD5281232C77BB0800142CB2 /* Toast.swift in Sources */,
 				FD16FB722C6E69A500D100D9 /* us_trackerApp.swift in Sources */,
 				FD7AFFD02C74649900F46EA4 /* MatchList.swift in Sources */,
 			);

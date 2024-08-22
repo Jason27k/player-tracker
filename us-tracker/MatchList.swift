@@ -10,35 +10,46 @@ import SDWebImageSwiftUI
 
 struct MatchList: View {
     @State var leagueObs = MatchListObservable()
+    @State var showToast = false
+    var toast = ToastModel(title: "Notification Added", image: "checkmark.circle.fill")
     
     var body: some View {
         NavigationStack {
-            ScrollView() {
-                VStack {
-                    DayHeader(leagueObs: leagueObs)
-                    ForEach(Array(leagueObs.matchList.keys), id: \.self) {
-                        key in
-                        Section {
-                            ForEach(leagueObs.matchList[key] ?? [], id: \.id) {
-                                match in
-                                MatchCardView(match: match, matchDetailsList: leagueObs.matchDetailsList, date: leagueObs.date)
-                            }
-                        } header: {
-                            HStack {
-                                Text(key)
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                Spacer()
+            ZStack {
+                ScrollView() {
+                    
+                    VStack {
+                        DayHeader(leagueObs: leagueObs)
+                        ForEach(Array(leagueObs.matchList.keys), id: \.self) {
+                            key in
+                            Section {
+                                ForEach(leagueObs.matchList[key] ?? [], id: \.id) {
+                                    match in
+                                    MatchCardView(match: match, matchDetailsList: leagueObs.matchDetailsList, date: leagueObs.date, showToast: $showToast)
+                                }
+                            } header: {
+                                HStack {
+                                    Text(key)
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
                             }
                         }
                     }
                 }
+                .padding()
+                .scrollIndicators(.hidden)
+                VStack {
+                    if showToast {
+                        Toast(toast: toast, show: $showToast)
+                    }
+                }
             }
-            .padding()
-            .scrollIndicators(.hidden)
         }
     }
 }
+
 
 struct DayHeader: View {
     @State var leagueObs: MatchListObservable
@@ -70,25 +81,26 @@ struct DayHeader: View {
                     .foregroundStyle(colorScheme == .dark ? .white : .black)
             }
             .popover(isPresented: $showSheet) {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Button("Cancel") {
-                                showSheet.toggle()
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button("Cancel") {
+                            showSheet.toggle()
+                        }
+                    }
+                    DatePicker("", selection: $leagueObs.date, in: dateRange, displayedComponents: .date)
+                        .labelsHidden()
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .presentationCompactAdaptation(.fullScreenCover)
+                        .onChange(of: leagueObs.date) { oldValue, newValue in
+                            showSheet = false
+                            Task {
+                                await leagueObs.fetchForDate(newValue)
                             }
                         }
-                        DatePicker("", selection: $leagueObs.date, in: dateRange, displayedComponents: .date)
-                            .labelsHidden()
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                            .presentationCompactAdaptation(.fullScreenCover)
-                            .onChange(of: leagueObs.date) { oldValue, newValue in
-                                showSheet = false
-                                Task {
-                                    await leagueObs.fetchForDate(newValue)
-                                }
-                            }
-                        Spacer()
-                    }
+                    Spacer()
+                }
+                .padding()
             }
             Spacer()
             Button {
@@ -101,7 +113,7 @@ struct DayHeader: View {
         }
         .padding()
         .onAppear {
-           let _ = checkNotificationPermission()
+            let _ = checkNotificationPermission()
         }
     }
 }
@@ -110,11 +122,12 @@ struct MatchCardView: View {
     var match: Matches
     var matchDetailsList: [Int:MatchDetail]
     var date: Date
+    @Binding var showToast: Bool
     
     var body: some View {
         VStack {
             if let matchDetails = matchDetailsList[match.id] {
-                MatchHeader(match: match, matchDetails: matchDetails, date: date)
+                MatchHeader(match: match, matchDetails: matchDetails, date: date, showToast: $showToast)
                 PlayersView(match: match, matchDetails: matchDetails)
             }
         }
@@ -252,6 +265,7 @@ struct MatchHeader: View{
     var matchDetails: MatchDetail
     var date: Date
     @State var notificationAdded = false
+    @Binding var showToast: Bool
     
     var body: some View {
         VStack {
@@ -269,14 +283,14 @@ struct MatchHeader: View{
                     Text(convertTime(match.status.utcTime))
                     if notificationAdded == false {
                         Button {
-                            print("Tapped")
+                            showToast = true
                             scheduleNotification(title: "\(match.home.name) vs \(match.away.name) is starting", matchId: match.id, date: date, time: convertTime(match.status.utcTime))
                             checkNotificationStatus(match.id, status: $notificationAdded)
                         } label: {
                             Text(Image(systemName: "plus"))
                         }
                     }
-                   
+                    
                 }
             }
             HStack {
@@ -310,7 +324,7 @@ struct MatchHeader: View{
     }
 }
 
-//#Preview {
-//    MatchList()
-//}
+#Preview {
+    MatchList()
+}
 
