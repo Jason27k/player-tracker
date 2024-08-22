@@ -160,6 +160,7 @@ func checkNotificationStatus(_ id: Int, status: Binding<Bool>?) {
 func scheduleNotification(title: String, matchId: Int, date: Date, time: String) {
     let content = UNMutableNotificationContent()
     content.title = title
+    content.sound = UNNotificationSound.default
     
     let combinedDate = combine(date: date, with: time)
     let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: combinedDate)
