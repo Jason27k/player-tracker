@@ -14,7 +14,7 @@ let playerData: [Int: String] = [
     982677: "Folarin Balogun",
     1159539: "Taylor Booth",
     924431: "Gianluca Busio",
-    1173678: "Johnny",
+    1173678: "Johnny Cardoso",
     780418: "Luca de la Torre",
     892816: "Sergino Dest",
     848266: "Weston McKennie",
@@ -35,15 +35,17 @@ let playerData: [Int: String] = [
     889536: "Timothy Weah",
     942980: "Richard Ledezma",
     1057433: "Tanner Tessmann",
-    848268: "Haji Wright"
+    848268: "Haji Wright",
+    1170744: "Caleb Wiley",
+    643589: "Cameron Carter-Vickers"
 ]
 
 let teamData: [Int: String] = [
+    9748: "Lyon",
     8463: "Leeds United",
     9908: "FC Utrecht",
     9885: "Juventus",
     10203: "Nottingham Forest",
-    8657: "Sheffield United",
     8640: "PSV Eindhoven",
     9788: "Borussia Mönchengladbach",
     9850: "Norwich City",
@@ -59,7 +61,9 @@ let teamData: [Int: String] = [
     9826: "Crystal Palace",
     9789: "Borussia Dortmund",
     8564: "AC Milan",
-    8669: "Coventry City"
+    8669: "Coventry City",
+    9848: "Strasbourg",
+    9925: "Celtic"
 ]
 
 let teamToPlayer: [Int: [Int]] = [
@@ -67,7 +71,7 @@ let teamToPlayer: [Int: [Int]] = [
     9908: [1159539, 1171008],
     9885: [848266, 889536],
     10203: [729988],
-    8657: [688271],
+    9925: [688271, 643589],
     8640: [1036401, 892816, 1126058, 942980],
     9788: [959696],
     9850: [848011],
@@ -76,14 +80,16 @@ let teamToPlayer: [Int: [Int]] = [
     9941: [924485],
     9910: [780418],
     8603: [1173678],
-    7881: [1057433, 924431],
+    7881: [924431],
+    9748: [1057433],
     9829: [982677],
     8678: [729769],
     9879: [662428],
     9826: [950829],
     9789: [1071179],
     8564: [688295, 1137272],
-    8669: [848268]
+    8669: [848268],
+    9848: [1170744]
 ]
 
 

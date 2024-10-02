@@ -63,42 +63,42 @@ enum PlayerPosition {
 
 func playerDetails(matchDetail: MatchDetail, playerId: Int, home: Bool) -> (Player?, PlayerPosition) {
     if home {
-        if let starters = matchDetail.content.lineup2.homeTeam.starters {
+        if let starters = matchDetail.content.lineup2?.homeTeam.starters {
             let startersFiltered = starters.filter { $0.id == playerId }
             if !startersFiltered.isEmpty {
                 return (startersFiltered[0], PlayerPosition.starter)
             }
         }
         
-        if let subs = matchDetail.content.lineup2.homeTeam.subs {
+        if let subs = matchDetail.content.lineup2?.homeTeam.subs {
             let subsFiltered = subs.filter { $0.id == playerId }
             if !subsFiltered.isEmpty {
                 return (subsFiltered[0], PlayerPosition.sub)
             }
         }
         
-        if let unavailable = matchDetail.content.lineup2.homeTeam.unavailable {
+        if let unavailable = matchDetail.content.lineup2?.homeTeam.unavailable {
             let unavailableFiltered = unavailable.filter { $0.id == playerId }
             if !unavailableFiltered.isEmpty {
                 return (unavailableFiltered[0], PlayerPosition.unavailable)
             }
         }
     } else {
-        if let starters = matchDetail.content.lineup2.awayTeam.starters {
+        if let starters = matchDetail.content.lineup2?.awayTeam.starters {
             let startersFiltered = starters.filter { $0.id == playerId }
             if !startersFiltered.isEmpty {
                 return (startersFiltered[0], PlayerPosition.starter)
             }
         }
         
-        if let subs = matchDetail.content.lineup2.awayTeam.subs {
+        if let subs = matchDetail.content.lineup2?.awayTeam.subs {
             let subsFiltered = subs.filter { $0.id == playerId }
             if !subsFiltered.isEmpty {
                 return (subsFiltered[0], PlayerPosition.sub)
             }
         }
         
-        if let unavailable = matchDetail.content.lineup2.awayTeam.unavailable {
+        if let unavailable = matchDetail.content.lineup2?.awayTeam.unavailable {
             let unavailableFiltered = unavailable.filter { $0.id == playerId }
             if !unavailableFiltered.isEmpty {
                 return (unavailableFiltered[0], PlayerPosition.unavailable)

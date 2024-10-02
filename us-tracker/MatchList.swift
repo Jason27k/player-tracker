@@ -173,7 +173,9 @@ struct PlayerCardView: View {
         ForEach(players, id: \.self) { player in
             if let name = playerData[player] {
                 HStack(alignment: .top) {
-                    LocalWebPImageView(imageName: name.lowercased().split(separator: " ").joined(), width: 70, height: 70)
+                    Image(name.lowercased().split(separator: " ").joined())
+                        .resizable()
+                        .frame(width: 70, height: 70)
                         .background(.black)
                         .clipShape(Circle())
                         .padding(.trailing, 5)
@@ -231,6 +233,8 @@ struct PlayerCardView: View {
                             }
                         }
                     }
+                }.task {
+                    print("\(name.lowercased().split(separator: " ").joined())")
                 }
             }
         }

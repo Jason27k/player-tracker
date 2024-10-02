@@ -27,7 +27,7 @@ struct Toast: View {
             .foregroundStyle(.primary)
             .padding(.vertical, 20)
             .padding(.horizontal, 40)
-            .background(.green.opacity(0.4), in: Capsule())
+            .background(.green.opacity(0.9), in: Capsule())
             .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
             .onTapGesture {
                 withAnimation {

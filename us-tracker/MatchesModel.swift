@@ -85,7 +85,7 @@ struct HeaderTeamInfo: Decodable {
 }
 
 struct Content: Decodable {
-    let lineup2: LineUp
+    let lineup2: LineUp?
 }
 
 struct Player: Decodable, Identifiable {
